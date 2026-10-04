@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nightmare — amostra de composição</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #101014;
+      --ink: #fff;
+      --yellow: #f7ff19;
+      --blue: #2742a5;
+      --ghost: rgba(255, 255, 255, 0.15);
+      --inset: 64px;
+      --header: 72px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--ink); }
+    body { font-family: "Source Sans 3", sans-serif; font-size: 16px; }
+    button, a, input { font: inherit; color: inherit; }
+    a { text-decoration: none; }
+    button { border: 0; background: transparent; cursor: pointer; }
+
+    .bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      height: var(--header);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+      background: #101014;
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .shield { width: 32px; height: 32px; display: block; }
+    .mark strong {
+      font-family: Almendra, serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      padding-right: 2px;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex: 0 0 auto;
+      min-width: 0;
+    }
+    .links a {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.28px;
+      white-space: nowrap;
+    }
+    .caret { font-size: 9px; margin-left: 4px; opacity: 0.8; }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1 1 auto;
+      width: auto;
+      min-width: 200px;
+      max-width: 420px;
+      height: 42px;
+      margin-left: auto;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .search input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-size: 14px;
+      letter-spacing: 0.28px;
+    }
+    .search input::placeholder { color: rgba(255, 255, 255, 0.72); }
+
+    .tools {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 0 auto;
+    }
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+    }
+    .ghost, .shop, .primary {
+      height: 36px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 22px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.28px;
+      white-space: nowrap;
+    }
+    .ghost { min-width: 108px; background: var(--ghost); }
+    .shop { min-width: 140px; background: var(--blue); }
+    .primary { min-width: 156px; background: var(--yellow); color: #101014; }
+    .menu-btn { display: none; width: 48px; height: 48px; font-size: 22px; }
+
+    .panel { display: none; background: var(--bg); padding: 8px 24px 28px; }
+    .panel.open { display: block; }
+    .panel a {
+      display: block;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero {
+      position: relative;
+      height: min(560px, calc(100vh - 72px - 210px));
+      min-height: 400px;
+      overflow: hidden;
+      background:
+        radial-gradient(90% 120% at 68% 42%, #ff2d55 0%, #b01030 38%, #3a0614 72%, #140208 100%);
+    }
+    .slide {
+      position: absolute;
+      z-index: 2;
+      left: max(88px, 11vw);
+      top: 50%;
+      width: min(520px, 46vw);
+      transform: translateY(-54%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .slide.on { opacity: 1; pointer-events: auto; }
+    .pair { display: flex; align-items: center; gap: 18px; }
+    .rule { width: 2px; align-self: stretch; background: rgba(255, 255, 255, 0.75); }
+    .lockup {
+      margin: 0;
+      font-family: Almendra, serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      text-shadow: 4px 4px 0 #4a0418;
+    }
+    .slide.play .lockup { font-size: 72px; }
+    .kicker {
+      margin: 10px 0 0;
+      font-family: Almendra, serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+    }
+    .line {
+      margin: 18px 0 22px;
+      max-width: 34em;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+    .hero-cta {
+      height: 44px;
+      padding: 0 22px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      background: var(--yellow);
+      color: #101014;
+      font-family: Almendra, serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .cast {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(720px, 46vw);
+      height: 92%;
+      z-index: 1;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 46%;
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 22px;
+    }
+    .arrow.prev { left: 18px; }
+    .arrow.next { right: 18px; }
+
+    .pager {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .dot.on { width: 36px; background: #fff; }
+    .pause {
+      color: #fff;
+      font-size: 12px;
+      margin-left: 4px;
+      width: 22px;
+      height: 22px;
+    }
+    .dot { border: 0; padding: 0; }
+
+    .server { padding: 18px 0 48px; background: var(--bg); }
+    .server h2 {
+      margin: 0 0 14px var(--inset);
+      font-family: Almendra, serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+    .rail { overflow: hidden; }
+    .track {
+      display: flex;
+      width: max-content;
+      animation: news-loop 36s linear infinite;
+    }
+    .rail:hover .track { animation-play-state: paused; }
+    .rail { padding-left: 48px; }
+    .set { display: flex; gap: 16px; padding-left: 16px; }
+    @keyframes news-loop {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .tile { width: 195px; flex: 0 0 auto; color: inherit; }
+    .face {
+      position: relative;
+      display: block;
+      height: 110px;
+      border-radius: 12px;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg, rgba(255,255,255,0.16), transparent 42%),
+        var(--c);
+    }
+    .tile:hover .face { outline: 3px solid var(--yellow); outline-offset: -3px; }
+    .poster {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: 28px;
+      font-family: Almendra, serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      min-width: 22px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 4px;
+      background: #111;
+      font-size: 11px;
+      font-weight: 500;
+      display: grid;
+      place-items: center;
+    }
+    .count {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      height: 20px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.72);
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+    }
+    .tile em {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      font-family: Almendra, serif;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1520px) {
+      .opt { display: none; }
+    }
+    @media (max-width: 1180px) {
+      .icon-btn { display: none; }
+      .search { min-width: 180px; max-width: none; }
+    }
+    @media (max-width: 1220px) {
+      .tight { display: none; }
+    }
+    @media (max-width: 1000px) {
+      .ghost, .shop, .primary { min-width: 0; padding: 0 16px; }
+      .search { min-width: 120px; }
+    }
+    @media (max-width: 700px) {
+      :root { --inset: 24px; }
+      .links, .search, .icon-btn, .ghost, .shop { display: none; }
+      .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+      .bar { gap: 12px; padding: 0 16px; }
+      .hero { height: 520px; min-height: 0; }
+      .slide { left: 24px; width: calc(100% - 48px); top: auto; bottom: 72px; transform: none; }
+      .lockup, .slide.play .lockup { font-size: 48px; }
+      .pair { gap: 10px; }
+      .cast { width: 100%; right: 0; height: 46%; bottom: auto; top: 8px; }
+      .hero-cta { height: 36px; font-size: 18px; }
+      .server h2 { font-size: 20px; }
+      .arrow { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <a class="mark" href="#topo">
+      <svg class="shield" viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="#fff" d="M16 2 4 7v8c0 7 5 12 12 15 7-3 12-8 12-15V7L16 2z"/>
+        <path fill="#101014" d="M16 7 9 10v5c0 4 3 7 7 9 4-2 7-5 7-9v-5l-7-3z"/>
+      </svg>
+      <strong>NIGHTMARE</strong>
+    </a>
+    <nav class="links" aria-label="Principal">
+      <a href="#servidor">Servidor</a>
+      <a href="#servidor">Rankings</a>
+      <a href="#servidor">Eventos</a>
+      <a class="tight" href="#servidor">Conta <span class="caret">▼</span></a>
+      <a class="tight" href="#servidor">Loja <span class="caret">▼</span></a>
+      <a class="opt" href="#servidor">Novidades</a>
+      <a class="opt" href="#servidor">Mais <span class="caret">▼</span></a>
+    </nav>
+    <form class="search" action="#servidor">
+      <span aria-hidden="true">⌕</span>
+      <input type="search" placeholder="Procurar" aria-label="Procurar">
+    </form>
+    <div class="tools">
+      <button class="icon-btn" type="button" aria-label="Idioma">◌</button>
+      <a class="ghost" href="#topo">Entrar</a>
+      <a class="shop" href="https://munightmare.site/shop">Loja</a>
+      <a class="primary" href="https://www.mediafire.com/file/28aepdua2m0tzve/ReleaseFull.rar/file">Baixar ↓</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">☰</button>
+    </div>
+  </header>
+  <nav class="panel" id="menu" hidden>
+    <a href="#servidor">Servidor</a>
+    <a href="#servidor">Rankings</a>
+    <a href="#servidor">Eventos</a>
+    <a href="#servidor">Loja</a>
+    <a href="#servidor">Marketplace</a>
+    <a href="#topo">Entrar</a>
+    <a href="#topo">Criar conta</a>
+  </nav>
+
+  <main id="topo">
+    <section class="hero" aria-roledescription="carrossel" aria-label="Destaques">
+      <div class="slide promo on">
+        <div class="pair">
+          <p class="lockup">Nightmare</p>
+          <span class="rule"></span>
+          <p class="lockup">Loja</p>
+        </div>
+        <p class="line">Itens da temporada disponíveis na loja.</p>
+        <a class="hero-cta" href="https://munightmare.site/shop">Ir à loja</a>
+      </div>
+      <div class="slide play">
+        <p class="kicker">Nightmare</p>
+        <p class="lockup">Season 6</p>
+        <p class="line">Experiência x3 e drop x3.<br>Teto de 250 resets e 400 pontos por reset.</p>
+        <a class="hero-cta" href="https://www.mediafire.com/file/28aepdua2m0tzve/ReleaseFull.rar/file">Jogue agora</a>
+      </div>
+      <svg class="cast" viewBox="0 0 760 560" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+        <ellipse cx="150" cy="150" rx="70" ry="78" fill="#7c6bff"/>
+        <path fill="#5a46e0" d="M70 250h160l20 280H50z"/>
+        <ellipse cx="118" cy="168" rx="14" ry="18" fill="#1a1030"/>
+        <ellipse cx="182" cy="168" rx="14" ry="18" fill="#1a1030"/>
+        <ellipse cx="330" cy="168" rx="64" ry="70" fill="#c47a4a"/>
+        <path fill="#8a4b32" d="M250 120h160v40H250z"/>
+        <path fill="#a85b3a" d="M255 248h150l24 282H230z"/>
+        <path fill="#f2c14e" d="M470 200c40-90 150-70 160 20 8 70-30 110-80 110s-90-40-80-130z"/>
+        <rect x="500" y="300" width="150" height="250" rx="16" fill="#e0a82e"/>
+        <ellipse cx="660" cy="176" rx="58" ry="64" fill="#e23b3b"/>
+        <path fill="#9d1d2e" d="M600 250h130l18 290H582z"/>
+        <path fill="#f3f0e6" d="M628 150h64l-8 36H636z"/>
+      </svg>
+      <button class="arrow prev" type="button" aria-label="Anterior">‹</button>
+      <button class="arrow next" type="button" aria-label="Seguinte">›</button>
+      <div class="pager">
+        <button class="dot on" type="button" aria-label="Slide 1"></button>
+        <button class="dot" type="button" aria-label="Slide 2"></button>
+        <button class="pause" type="button" aria-label="Pausar">❚❚</button>
+      </div>
+    </section>
+
+    <section class="server" id="servidor" aria-labelledby="server-title">
+      <h2 id="server-title">Notícias</h2>
+      <div class="rail" id="news">
+        <div class="track">
+          <div class="set">
+            <a class="tile" href="https://munightmare.site/"><span class="face" style="--c:#c026d3"><span class="badge">S6</span><span class="poster">Season<br>6</span><span class="count">agora</span></span><em>Season 6 está no ar</em></a>
+            <a class="tile" id="loja" href="https://munightmare.site/shop"><span class="face" style="--c:#ca8a04"><span class="badge">LJ</span><span class="poster">Loja</span><span class="count">temporada</span></span><em>Loja da temporada</em></a>
+            <a class="tile" href="https://munightmare.site/stats"><span class="face" style="--c:#7c3aed"><span class="badge">RK</span><span class="poster">Rank</span><span class="count">caça</span></span><em>Rankings dos caçadores</em></a>
+            <a class="tile" href="https://munightmare.site/events"><span class="face" style="--c:#be123c"><span class="badge">EV</span><span class="poster">Eventos</span><span class="count">semana</span></span><em>Eventos da semana</em></a>
+            <a class="tile" href="https://munightmare.site/marketplace"><span class="face" style="--c:#0f766e"><span class="badge">MK</span><span class="poster">Mercado</span><span class="count">jogadores</span></span><em>Marketplace aberto</em></a>
+            <a class="tile" href="https://munightmare.site/"><span class="face" style="--c:#1d4ed8"><span class="badge">XP</span><span class="poster">x3</span><span class="count">exp</span></span><em>Experiência em x3</em></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    var button = document.querySelector(".menu-btn");
+    var panel = document.getElementById("menu");
+    button.addEventListener("click", function () {
+      var open = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!open));
+      panel.hidden = open;
+      panel.classList.toggle("open", !open);
+    });
+
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var dots = Array.prototype.slice.call(document.querySelectorAll(".pager .dot"));
+    var pauseBtn = document.querySelector(".pause");
+    var index = 0;
+    var timer = null;
+    var paused = false;
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) { slide.classList.toggle("on", i === index); });
+      dots.forEach(function (dot, i) { dot.classList.toggle("on", i === index); });
+    }
+    function play() {
+      clearInterval(timer);
+      if (paused) return;
+      timer = setInterval(function () { show(index + 1); }, 6000);
+    }
+    document.querySelector(".arrow.next").addEventListener("click", function () { show(index + 1); play(); });
+    document.querySelector(".arrow.prev").addEventListener("click", function () { show(index - 1); play(); });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () { show(i); play(); });
+    });
+    pauseBtn.addEventListener("click", function () {
+      paused = !paused;
+      pauseBtn.textContent = paused ? "▶" : "❚❚";
+      pauseBtn.setAttribute("aria-label", paused ? "Retomar" : "Pausar");
+      play();
+    });
+    play();
+
+    var set = document.querySelector(".set");
+    var clone = set.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    set.parentNode.appendChild(clone);
+  </script>
+</body>
+</html>
