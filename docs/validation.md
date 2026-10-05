@@ -46,3 +46,11 @@ FormSelect compartilhado baseado no Select shadcn/Radix substitui os selects nat
 Footer com marca/social, grupos Jogo e Comunidade e bloco legal discreto, sem altura fixa ou opções adicionais. Referência solicitada: https://www.fortnite.com/ (captura visual bloqueada por verificação de segurança). Pesquisa da paleta: https://blog.adobe.com/en/publish/2020/12/04/modern-gothic-design-explores-empowers-with-futuristic-noir .
 
 Build e lint aprovados. Quatorze testes de navegador passaram na execução geral; os dois testes específicos passaram após corrigir o seletor do formulário no teste. Verificados filtro por classe, altura comum, foco sutil, envio FormData e reset.
+
+## Promoções e blog — 05/10/2026
+
+Componentes compartilhados SectionIntro, ImagePromotion e InfiniteConveyor. Home com duas promoções de produtos reais do mock (VIP FULL e 2.200 Coins), CTAs destacam o produto na loja. Eventos passam a esteira contínua com pausa, teclado e movimento reduzido, sem Agenda. Aparência dos cards de notícias preservada.
+
+Blog interno com feed, busca/categoria, artigos com capa e parágrafos, publicação/edição pela conta demo (dono), curtidas únicas por usuário, comentários e exclusão pelo autor/dono, compartilhamento e persistência local. Visitantes leem; jogadores comuns interagem sem controles editoriais. Não há backend ou permissão real de administrador.
+
+Quinze testes existentes aprovados e três testes novos aprovados após corrigir a consulta do PIN no teste. Verificados promos, loop de eventos, publicação/edição, curtidas/comentários após reload e leitor sem permissão editorial. Build e lint aprovados. Layout sem overflow em 320, 390 e 1440 px.

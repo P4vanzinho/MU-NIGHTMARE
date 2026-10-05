@@ -3,8 +3,12 @@ test("notícias movem continuamente, pausam e não duplicam links acessíveis", 
   page,
 }) => {
   await page.goto("/");
-  const conveyor = page.locator(".news-conveyor");
-  const track = page.locator(".news-conveyor-track");
+  const conveyor = page.locator(
+    ".home-content > section:first-child .news-conveyor",
+  );
+  const track = page.locator(
+    ".home-content > section:first-child .news-conveyor-track",
+  );
   const first = await track.evaluate((el) => getComputedStyle(el).transform);
   await page.waitForTimeout(250);
   expect(await track.evaluate((el) => getComputedStyle(el).transform)).not.toBe(
@@ -65,10 +69,9 @@ test("status no header cabe no mobile e abre detalhes simulados", async ({
 test("movimento reduzido inicia notícias pausadas", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.locator(".news-conveyor")).toHaveAttribute(
-    "data-paused",
-    "true",
-  );
+  await expect(
+    page.locator(".home-content > section:first-child .news-conveyor"),
+  ).toHaveAttribute("data-paused", "true");
   await expect(
     page.getByRole("button", { name: "Retomar notícias", exact: true }),
   ).toBeVisible();
@@ -80,7 +83,9 @@ test("esteira alcança as bordas da tela sem cortar na margem do conteúdo", asy
   for (const width of [320, 390, 1440, 1910]) {
     await page.setViewportSize({ width, height: 915 });
     await page.goto("/");
-    const rail = await page.locator(".news-conveyor").boundingBox();
+    const rail = await page
+      .locator(".home-content > section:first-child .news-conveyor")
+      .boundingBox();
     expect(rail?.x).toBeCloseTo(0, 0);
     expect(rail?.width).toBeCloseTo(width, 0);
     const heading = await page
@@ -94,7 +99,7 @@ test("esteira alcança as bordas da tela sem cortar na margem do conteúdo", asy
       ),
     ).toBe(true);
     const geometry = await page
-      .locator(".news-conveyor-track")
+      .locator(".home-content > section:first-child .news-conveyor-track")
       .evaluate((el) => {
         const groups = Array.from(el.children).map((group) =>
           group.getBoundingClientRect(),

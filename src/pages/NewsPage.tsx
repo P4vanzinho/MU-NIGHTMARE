@@ -1,43 +1,60 @@
-import { Translated } from "@/i18n/Translated";
+import "@/features/blog/blog.css";
 import { useParams, Link } from "react-router-dom";
 import { PageHeading } from "@/components/shared/PageHeading";
-import { NewsCard } from "@/components/home/NewsCard";
-import { news } from "@/data/seed";
-import { Button } from "@/components/ui/button";
+import { useGame } from "@/store/useGame";
+import { useBlog } from "@/features/blog/store";
+import { BlogFeed } from "@/features/blog/BlogFeed";
+import { PostEditor } from "@/features/blog/PostEditor";
+import { PostInteractions } from "@/features/blog/PostInteractions";
 export function NewsPage() {
   const { slug } = useParams();
+  const { user } = useGame();
+  const { posts } = useBlog();
+  const owner = user?.username === "demo";
+  if (!slug)
+    return (
+      <div className="page">
+        <PageHeading
+          title="Notícias"
+          action={owner ? <PostEditor /> : undefined}
+        />
+        <BlogFeed posts={posts} />
+      </div>
+    );
+  const post = posts.find((item) => item.slug === slug);
+  if (!post)
+    return (
+      <div className="page">
+        <PageHeading title="Postagem não encontrada" />
+        <Link to="/news" className="underline">
+          Voltar às notícias
+        </Link>
+      </div>
+    );
   return (
     <div className="page">
-      <PageHeading
-        title={slug ? "Season 6 está no ar." : "Um novo capítulo a cada dia."}
-      />
-      {slug ? (
-        <article className="panel max-w-3xl">
-          <p className="font-semibold mb-6">
-            <Translated text="04 OUT 2026 · Atualização demo" />
+      <article className="blog-article">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <Link to="/news" className="muted hover:underline">
+            ← Notícias
+          </Link>
+          {owner && <PostEditor post={post} />}
+        </div>
+        <header>
+          <p className="blog-meta">
+            {post.category} · {new Date(post.date).toLocaleDateString("pt-BR")}{" "}
+            · {post.author}
           </p>
-          <h2 className="text-3xl font-bold">
-            <Translated text="Bem-vindo ao pesadelo" />
-          </h2>
-          <p className="muted my-6">
-            <Translated text="A Season 6 reúne progressão por resets, eventos clássicos e negociações entre jogadores. Conheça o servidor, prepare seu personagem e participe da comunidade." />
-          </p>
-          <p className="muted mb-6">
-            <Translated text="Experiência ×3, drop ×3, limite de 250 resets e 400 pontos por reset. Esta notícia é conteúdo demonstrativo." />
-          </p>
-          <Button asChild>
-            <Link to="/download">
-              <Translated text="Começar a jogar" />
-            </Link>
-          </Button>
-        </article>
-      ) : (
-        <div className="grid-cards">
-          {news.map((n) => (
-            <NewsCard key={n.title} {...n} />
+          <h1 className="page-title mt-4">{post.title}</h1>
+        </header>
+        <img className="blog-cover" src={post.image} alt="" />
+        <div className="blog-body">
+          {post.body.split(/\n\s*\n/).map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
         </div>
-      )}
+        <PostInteractions post={post} />
+      </article>
     </div>
   );
 }

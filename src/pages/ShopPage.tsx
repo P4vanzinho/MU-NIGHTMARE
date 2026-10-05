@@ -1,6 +1,6 @@
 import { Translated } from "@/i18n/Translated";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useGame } from "@/store/useGame";
 import { products } from "@/data/seed";
 import { PageHeading } from "@/components/shared/PageHeading";
@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
 export function ShopPage() {
+  const [params] = useSearchParams();
+  const featured = params.get("product");
   const { user, state, dispatch } = useGame();
   const [checkout, setCheckout] = useState<string | null>(null);
   const [filter, setFilter] = useState("Tudo");
@@ -81,7 +83,12 @@ export function ShopPage() {
             {products
               .filter((p) => filter === "Tudo" || p.kind === filter)
               .map((p) => (
-                <article key={p.id} className="panel">
+                <article
+                  key={p.id}
+                  className={
+                    "panel " + (featured === p.id ? "ring-1 ring-primary" : "")
+                  }
+                >
                   <Badge variant="secondary">
                     <Translated text={p.tag} />
                   </Badge>

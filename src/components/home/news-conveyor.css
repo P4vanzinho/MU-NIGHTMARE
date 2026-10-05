@@ -13,7 +13,8 @@
 }
 .news-conveyor-group {
   display: grid;
-  grid-template-columns: repeat(var(--news-columns), var(--news-card-width));
+  grid-auto-flow: column;
+  grid-auto-columns: var(--news-card-width);
   gap: var(--news-card-gap);
   padding-right: var(--news-card-gap);
 }
@@ -37,4 +38,11 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+.events-conveyor {
+  --news-card-width: max(
+    240px,
+    calc((100vw - 2 * var(--layout-gutter) - 3 * var(--news-card-gap)) / 4)
+  );
 }

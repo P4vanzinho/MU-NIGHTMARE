@@ -40,7 +40,10 @@ test("home termina perto do footer e footer cabe no mobile", async ({
 }) => {
   await page.goto("/");
   const content = await page.locator(".home-content").boundingBox();
-  const events = await page.locator(".home-content .section").boundingBox();
+  const events = await page
+    .locator(".home-content .section")
+    .last()
+    .boundingBox();
   expect(
     content!.y + content!.height - events!.y - events!.height,
   ).toBeLessThanOrEqual(33);
