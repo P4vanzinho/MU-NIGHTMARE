@@ -80,9 +80,6 @@ export function Hero() {
     >
       <HeroArt image={slide.image} />
       <div className="hero-content">
-        <p className="mb-7 text-sm font-bold tracking-[.2em]">
-          <Translated text={slide.label} />
-        </p>
         <h1 className="hero-title">
           <Translated text={slide.title} />
         </h1>

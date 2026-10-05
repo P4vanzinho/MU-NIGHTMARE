@@ -208,6 +208,15 @@ a {
 .poster > svg {
   z-index: 1;
 }
+.poster.has-badges {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 68px 40px 22px 16px;
+}
+.poster.has-badges h3 {
+  font-size: 34px;
+  max-width: calc(100% - 28px);
+}
 .poster h3 {
   position: relative;
   font-size: 46px;
