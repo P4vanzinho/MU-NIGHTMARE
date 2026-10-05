@@ -668,5 +668,9 @@
   "Sua jornada começa aqui": "Your journey starts here",
   "Padrões: AuthGate, Checkout, VaultPanel, CharactersPanel, PaymentsPanel, Hero, Header e Layout.": "Patterns: AuthGate, Checkout, VaultPanel, CharactersPanel, PaymentsPanel, Hero and Layout.",
   "Raio: 8 / 12 px. Cards: gap 24 px. Seções: 64 px, 40 px no mobile. Página: 48 px, 20 px no mobile.": "Radius: 8 / 12 px. Cards: 24 px gap. Sections: 64 px, 40 px on mobile. Page: 48 px, 20 px on mobile.",
-  "Raio: 8 / 12 px. Cards: gap 24 px; notícias: 16 px. Seções: 64 px, 40 px no mobile. Margem lateral compartilhada: 20 a 64 px.": "Radius: 8 / 12 px. Cards: 24 px gap; news: 16 px. Sections: 64 px, 40 px on mobile. Shared horizontal gutter: 20 to 64 px."
+  "Raio: 8 / 12 px. Cards: gap 24 px; notícias: 16 px. Seções: 64 px, 40 px no mobile. Margem lateral compartilhada: 20 a 64 px.": "Radius: 8 / 12 px. Cards: 24 px gap; news: 16 px. Sections: 64 px, 40 px on mobile. Shared horizontal gutter: 20 to 64 px.",
+  "Informações do servidor": "Server information",
+  "Status e jogadores são dados simulados deste protótipo.": "Status and player count are simulated in this prototype.",
+  "jogadores online": "players online",
+  "Conhecer o servidor": "Explore the server"
 }

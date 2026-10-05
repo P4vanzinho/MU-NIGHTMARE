@@ -4,7 +4,7 @@ Auditoria em 04/10/2026. HTML original arquivado em `references/nightmare-amostr
 
 ## Amostra aprovada
 
-Header com marca, Servidor, Rankings, Eventos, Conta, Loja, Novidades, Mais, busca, entrar e baixar; grupos em menus acessíveis. Carrossel Loja / Season 6, anterior/próximo, dots, pausa e rotação de 6 segundos. Notícias em faixa horizontal acessível sem duplicação automática de links. Mesma paleta escura, CTA amarelo, hero azul/violeta e Almendra na marca.
+Header com marca, Servidor, Rankings, Eventos, Conta, Loja, Novidades, Mais, busca, entrar e baixar; grupos em menus acessíveis. Carrossel Loja / Season 6, anterior/próximo, dots, pausa e rotação de 6 segundos. Notícias em esteira contínua com pausa; a cópia visual do loop fica oculta da árvore de acessibilidade e da navegação por teclado. Mesma paleta escura, CTA amarelo, hero azul/violeta e Almendra na marca.
 
 ## Site antigo e equivalentes
 
@@ -41,3 +41,9 @@ Header com marca, Servidor, Rankings, Eventos, Conta, Loja, Novidades, Mais, bus
 ## Limites deliberados do protótipo
 
 Dados, preços, agenda, status e recompensas são mocks. PIX e Mercado Pago simulam comportamento sem integrações. A reserva é local ao navegador; não coordena clientes reais. Políticas estão resumidas para revisão; a versão de produção deve importar os textos oficiais completos. O download é demonstrativo e o convite Discord original é placeholder. Ícones e arte vetorial são ilustrações próprias de composição; assets finais do jogo podem substituir as áreas visuais sem alterar os fluxos.
+
+## Status no header e esteira — 05/10/2026
+
+Header com faixa compacta de jogadores online, Season, EXP e DROP; no mobile, a Season aparece apenas nos detalhes. A faixa abre um dialog com dados mockados e acesso à página do servidor. Notícias usam loop contínuo, pausa manual/hover e preferência de movimento reduzido. Ambos os componentes estão no catálogo.
+
+Referências consultadas: [Havek MU](https://havek.mu/?lang=en) e [Global MU](https://global.muonline.io/servers), para hierarquia de status, população e rates.

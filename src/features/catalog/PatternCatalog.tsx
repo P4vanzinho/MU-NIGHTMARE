@@ -1,3 +1,5 @@
+import { NewsConveyor } from "@/components/home/NewsConveyor";
+import { ServerStatusBar } from "@/components/layout/ServerStatusBar";
 import { Translated } from "@/i18n/Translated";
 import { NewsCard } from "@/components/home/NewsCard";
 import { ListingCard } from "@/features/market/ListingCard";
@@ -9,6 +11,12 @@ import { toast } from "sonner";
 export function PatternCatalog({ onDialog }: { onDialog: () => void }) {
   return (
     <div className="grid-cards">
+      <div className="col-span-full">
+        <NewsConveyor />
+      </div>
+      <div className="col-span-full overflow-hidden rounded-lg border border-border">
+        <ServerStatusBar />
+      </div>
       <div>
         <NewsCard {...news[0]} />
         <p className="muted mt-4">

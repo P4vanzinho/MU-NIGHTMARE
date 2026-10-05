@@ -8,15 +8,17 @@ export function NewsCard({
   tag,
   color,
   to,
+  duplicate = false,
 }: {
   title: string;
   poster: string;
   tag: string;
   color: string;
   to: string;
+  duplicate?: boolean;
 }) {
   return (
-    <Link to={to} className="group">
+    <Link to={to} className="group" tabIndex={duplicate ? -1 : undefined}>
       <div
         className="poster transition-transform group-hover:-translate-y-1"
         style={{ "--poster-color": color } as CSSProperties}

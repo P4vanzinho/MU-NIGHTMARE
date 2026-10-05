@@ -1,66 +1,17 @@
+import { NewsConveyor } from "@/components/home/NewsConveyor";
 import { Translated } from "@/i18n/Translated";
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Users, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/home/Hero";
 import { NewsCard } from "@/components/home/NewsCard";
 import { Button } from "@/components/ui/button";
-import { news, events } from "@/data/seed";
+import { events } from "@/data/seed";
 export function HomePage() {
   return (
     <>
       <Hero />
       <div className="page home-content">
-        <section>
-          <div className="mb-4 flex justify-between">
-            <h2 className="text-2xl font-bold">
-              <Translated text="Notícias" />
-            </h2>
-            <Link to="/news" className="flex items-center gap-2 text-sm">
-              <Translated text="Ver todas" />
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="news-rail">
-            {news.map((n) => (
-              <NewsCard key={n.title} {...n} />
-            ))}
-          </div>
-        </section>
-        <section className="section grid gap-6 md:grid-cols-3">
-          {[
-            {
-              icon: Shield,
-              title: "Season 6",
-              sub: "Um clássico. Um novo desafio.",
-            },
-            {
-              icon: Users,
-              title: "Servidor online",
-              sub: "284 jogadores · dados demonstrativos",
-            },
-            {
-              icon: Zap,
-              title: "EXP ×3 · DROP ×3",
-              sub: "400 níveis. 250 resets. Sem atalhos.",
-            },
-          ].map(({ icon: Icon, title, sub }) => (
-            <Link
-              to="/server"
-              key={title}
-              className="panel flex items-center gap-4"
-            >
-              <Icon className="h-8 w-8 text-primary" />
-              <div>
-                <h3 className="font-bold">
-                  <Translated text={title} />
-                </h3>
-                <p className="muted text-sm">
-                  <Translated text={sub} />
-                </p>
-              </div>
-            </Link>
-          ))}
-        </section>
+        <NewsConveyor />
         <section className="section">
           <div className="mb-6 flex justify-between">
             <div>

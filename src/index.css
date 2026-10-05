@@ -32,13 +32,15 @@
   --primary: #f7ff19;
   --space-section: 4rem;
   --layout-gutter: clamp(20px, 3.2vw, 64px);
-  --header-height: 72px;
+  --header-nav-height: 72px;
+  --header-status-height: 40px;
+  --header-height: calc(var(--header-nav-height) + var(--header-status-height));
   --brand-icon-size: 28px;
   --brand-icon-gap: 8px;
   --news-columns: 6;
   --news-card-gap: 16px;
-  --news-heading-space: 68px; /* section inset + heading + gap */
-  --news-caption-space: 48px; /* label gap + line + rail padding */
+  --news-heading-space: 72px; /* section inset + heading + gap */
+  --news-caption-space: 52px; /* label gap + line + rail padding */
   --news-card-width: max(
     190px,
     calc(
@@ -161,8 +163,8 @@ a {
 .hero-title {
   font-family: Almendra, serif;
   width: min(50%, 680px);
-  height: 2.05em;
-  font-size: clamp(52px, 5.8vw, 108px);
+  height: auto;
+  font-size: clamp(52px, 5.8vw, 80px);
   line-height: 0.88;
   letter-spacing: -0.06em;
 }
@@ -208,14 +210,6 @@ a {
   width: 60%;
   height: 85%;
 }
-.news-rail {
-  display: grid;
-  grid-template-columns: repeat(var(--news-columns), minmax(190px, 1fr));
-  gap: var(--news-card-gap);
-  overflow: auto;
-  scroll-snap-type: x proximity;
-  padding-bottom: 12px;
-}
 .product-art {
   height: 180px;
   display: flex;
@@ -232,12 +226,10 @@ a {
   display: flex;
   gap: 24px;
   align-items: center;
-  height: var(--header-height);
+  height: var(--header-nav-height);
   padding: 12px var(--layout-gutter);
   background: #101014;
-  position: sticky;
-  top: 0;
-  z-index: 40;
+  position: relative;
   border-bottom: 1px solid #ffffff0d;
 }
 .desktop-nav {
@@ -332,13 +324,6 @@ a {
 
 .home-content {
   padding-top: 20px;
-}
-.news-rail > a {
-  scroll-snap-align: start;
-  min-width: 0;
-}
-.news-rail .poster h3 {
-  font-size: clamp(28px, 3vw, 42px);
 }
 .site-footer {
   padding: 40px var(--layout-gutter);
