@@ -53,8 +53,14 @@ export function Header() {
   const navigate = useNavigate();
   return (
     <header className="site-header">
-      <Link to="/" className="flex shrink-0 items-center gap-2">
-        <Shield fill="white" className="h-7 w-7 text-background" />
+      <Link
+        to="/"
+        className="flex shrink-0 items-center gap-[var(--brand-icon-gap)]"
+      >
+        <Shield
+          fill="white"
+          className="size-[var(--brand-icon-size)] text-background"
+        />
         <strong className="brand-font text-xl tracking-wide text-white">
           <Translated text="NIGHTMARE" />
         </strong>

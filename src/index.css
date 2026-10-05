@@ -33,6 +33,8 @@
   --space-section: 4rem;
   --layout-gutter: clamp(20px, 3.2vw, 64px);
   --header-height: 72px;
+  --brand-icon-size: 28px;
+  --brand-icon-gap: 8px;
   --news-columns: 6;
   --news-card-gap: 16px;
   --news-heading-space: 68px; /* section inset + heading + gap */
@@ -377,5 +379,13 @@ a {
   }
   .site-header > a > strong {
     font-size: 16px;
+  }
+}
+
+@media (min-width: 641px) {
+  .hero-content {
+    padding-left: calc(
+      var(--layout-gutter) + var(--brand-icon-size) + var(--brand-icon-gap)
+    );
   }
 }
