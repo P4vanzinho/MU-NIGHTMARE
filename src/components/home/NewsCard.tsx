@@ -9,6 +9,7 @@ export function NewsCard({
   color,
   to,
   duplicate = false,
+  image,
 }: {
   title: string;
   poster: string;
@@ -16,6 +17,7 @@ export function NewsCard({
   color: string;
   to: string;
   duplicate?: boolean;
+  image?: string;
 }) {
   return (
     <Link to={to} className="group" tabIndex={duplicate ? -1 : undefined}>
@@ -23,7 +25,11 @@ export function NewsCard({
         className="poster transition-transform group-hover:-translate-y-1"
         style={{ "--poster-color": color } as CSSProperties}
       >
-        <Sword />
+        {image ? (
+          <img className="poster-image" src={image} alt="" loading="lazy" />
+        ) : (
+          <Sword />
+        )}
         <span className="absolute left-4 top-4 rounded bg-black/25 px-2 py-1 text-xs font-bold">
           <Translated text={tag} />
         </span>

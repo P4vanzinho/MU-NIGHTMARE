@@ -172,15 +172,17 @@ a {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 55%;
+  width: 68%;
   height: 100%;
   overflow: hidden;
-  opacity: 0.95;
+  opacity: 1;
+  mask-image: linear-gradient(to right, transparent, black 25%);
 }
-.hero-art svg {
+.hero-art img {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 16px 32px #181131);
+  object-fit: cover;
+  object-position: center 30%;
 }
 .poster {
   position: relative;
@@ -194,7 +196,27 @@ a {
   align-items: center;
   justify-content: center;
 }
+.poster-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+.poster:has(.poster-image)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, #080810b8);
+}
+.poster > span,
+.poster h3,
+.poster > svg {
+  z-index: 1;
+}
 .poster h3 {
+  position: relative;
   font-size: 46px;
   line-height: 0.92;
   font-weight: 800;
@@ -291,6 +313,9 @@ a {
   .hero-art {
     width: 90%;
     opacity: 0.35;
+  }
+  .hero-art img {
+    object-position: left top;
   }
   .section {
     margin-top: 40px;

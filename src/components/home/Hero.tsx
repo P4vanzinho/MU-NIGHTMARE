@@ -13,6 +13,7 @@ import { HeroArt } from "./HeroArt";
 const slides = [
   {
     label: "NIGHTMARE × LOJA",
+    image: "/images/mu/dk.jpg",
     title: (
       <>
         <Translated text="O poder tem" />
@@ -26,6 +27,7 @@ const slides = [
   },
   {
     label: "BEM-VINDO AO PESADELO",
+    image: "/images/mu/dw.jpg",
     title: (
       <>
         <Translated text="Nightmare" />
@@ -61,7 +63,7 @@ export function Hero() {
       aria-label="Destaques"
       aria-roledescription="carrossel"
     >
-      <HeroArt />
+      <HeroArt image={slide.image} />
       <div className="hero-content">
         <p className="mb-7 text-sm font-bold tracking-[.2em]">
           <Translated text={slide.label} />

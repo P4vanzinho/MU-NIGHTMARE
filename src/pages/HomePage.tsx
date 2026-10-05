@@ -37,6 +37,7 @@ export function HomePage() {
                 poster={e.name}
                 tag={e.time + " · hoje"}
                 color={e.color}
+                image={e.image}
                 to="/events"
               />
             ))}

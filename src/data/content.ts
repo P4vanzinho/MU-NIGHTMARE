@@ -46,6 +46,7 @@ export const rankings = Array.from({ length: 20 }, (_, i) => ({
 export const events = [
   {
     name: "Blood Castle",
+    image: "/images/mu/dk.jpg",
     time: "14:00",
     duration: 15,
     desc: "Atravesse a ponte e recupere a arma do anjo.",
@@ -53,6 +54,7 @@ export const events = [
   },
   {
     name: "Devil Square",
+    image: "/images/mu/su.jpg",
     time: "16:30",
     duration: 20,
     desc: "Enfrente hordas e dispute o topo da arena.",
@@ -60,6 +62,7 @@ export const events = [
   },
   {
     name: "Chaos Castle",
+    image: "/images/mu/rf.jpg",
     time: "18:00",
     duration: 10,
     desc: "Sobreviva. Só um guerreiro sairá vencedor.",
@@ -67,6 +70,7 @@ export const events = [
   },
   {
     name: "Castle Siege",
+    image: "/images/mu/dl.jpg",
     time: "20:00",
     duration: 60,
     desc: "Sua guilda. Seu castelo. Seu legado.",
@@ -77,6 +81,7 @@ export const news = [
   {
     title: "Season 6 está no ar",
     poster: "Season 6",
+    image: "/images/mu/dk.jpg",
     tag: "S6",
     color: "#9335b5",
     to: "/news/season-6",
@@ -84,6 +89,7 @@ export const news = [
   {
     title: "Loja da temporada",
     poster: "Loja",
+    image: "/images/mu/el.jpg",
     tag: "LJ",
     color: "#a1741c",
     to: "/shop",
@@ -91,6 +97,7 @@ export const news = [
   {
     title: "Rankings dos caçadores",
     poster: "Rank",
+    image: "/images/mu/dl.jpg",
     tag: "RK",
     color: "#6338b7",
     to: "/stats",
@@ -98,6 +105,7 @@ export const news = [
   {
     title: "Eventos da semana",
     poster: "Eventos",
+    image: "/images/mu/mg.jpg",
     tag: "EV",
     color: "#a52248",
     to: "/events",
@@ -105,6 +113,7 @@ export const news = [
   {
     title: "Marketplace aberto",
     poster: "Mercado",
+    image: "/images/mu/su.jpg",
     tag: "MK",
     color: "#147b77",
     to: "/marketplace",
@@ -112,6 +121,7 @@ export const news = [
   {
     title: "Experiência em x3",
     poster: "×3",
+    image: "/images/mu/dw.jpg",
     tag: "XP",
     color: "#2744a0",
     to: "/server",
