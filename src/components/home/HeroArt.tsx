@@ -1,7 +1,7 @@
 export function HeroArt() {
   return (
     <div className="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 760 560" preserveAspectRatio="xMaxYMax meet">
+      <svg viewBox="0 0 760 560" preserveAspectRatio="xMaxYMin slice">
         <defs>
           <linearGradient id="armor" x2="1" y2="1">
             <stop stopColor="#c3a0ff" />

@@ -15,8 +15,8 @@ export function Layout() {
       <main>
         <Outlet />
       </main>
-      <footer className="border-t border-border px-6 py-10">
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-8">
+      <footer className="site-footer border-t border-border">
+        <div className="flex flex-wrap justify-between gap-8">
           <div>
             <Link to="/" className="brand-font text-2xl">
               <Translated text="NIGHTMARE" />

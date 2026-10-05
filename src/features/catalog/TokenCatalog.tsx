@@ -54,7 +54,7 @@ export function TokenCatalog() {
           <Translated text="Interface, conteúdo e números" />
         </p>
         <p className="muted mt-6">
-          <Translated text="Raio: 8 / 12 px. Cards: gap 24 px. Seções: 64 px, 40 px no mobile. Página: 48 px, 20 px no mobile." />
+          <Translated text="Raio: 8 / 12 px. Cards: gap 24 px; notícias: 16 px. Seções: 64 px, 40 px no mobile. Margem lateral compartilhada: 20 a 64 px." />
         </p>
       </div>
     </div>

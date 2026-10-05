@@ -69,7 +69,7 @@ export function Hero() {
         <h1 className="hero-title">
           <Translated text={slide.title} />
         </h1>
-        <p className="my-7 max-w-sm text-lg">
+        <p className="hero-description my-6 max-w-sm text-lg">
           <Translated text={slide.description} />
         </p>
         <Button asChild size="lg" className="min-w-44 rounded-full text-lg">

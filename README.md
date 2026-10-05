@@ -31,7 +31,7 @@ npm test
 - `store`: contexto que liga UI, regras e persistência.
 - `data`: mocks, produtos, eventos e notícias.
 
-Catálogo interativo: `/components`. Tokens no `src/index.css`: base de 4 px, gaps de 24 px, seções de 64 px (40 no mobile), margens de 48 px (20 no mobile).
+Catálogo interativo: `/components`. Tokens no `src/index.css`: base de 4 px, gaps de 24 px, seções de 64 px (40 no mobile), margem lateral compartilhada `--layout-gutter`, de 20 a 64 px conforme a largura da tela.
 
 ## Referências
 

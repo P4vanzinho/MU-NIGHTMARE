@@ -9,9 +9,9 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <div className="page">
+      <div className="page home-content">
         <section>
-          <div className="mb-6 flex justify-between">
+          <div className="mb-4 flex justify-between">
             <h2 className="text-2xl font-bold">
               <Translated text="Notícias" />
             </h2>
