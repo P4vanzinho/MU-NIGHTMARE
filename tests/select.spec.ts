@@ -40,3 +40,30 @@ test("select compartilhado mantém dados do formulário e reset", async ({
   await form.evaluate((el) => (el as HTMLFormElement).reset());
   await expect(select).toHaveText("Blade Knight");
 });
+
+test("destaques do ranking preservam posição global ao filtrar", async ({
+  page,
+}) => {
+  await page.goto("/stats");
+  await expect(page.locator(".rank-badge[data-rank]")).toHaveCount(5);
+  await expect(
+    page.locator('.ranking-row[data-position="1"] .rank-emblem'),
+  ).toBeVisible();
+  await page.getByRole("textbox", { name: "Buscar personagem" }).fill("Shadow");
+  const first = page.locator(".ranking-row").first();
+  await expect(first).toHaveAttribute("data-position", "2");
+  await expect(first.getByLabel("2º lugar", { exact: true })).toBeVisible();
+  await first.click();
+  await expect(
+    page
+      .getByRole("dialog")
+      .getByRole("heading", { name: "Shadow", exact: true }),
+  ).toBeVisible();
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto("/stats");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});

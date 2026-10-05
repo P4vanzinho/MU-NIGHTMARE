@@ -25,7 +25,7 @@ export function RankingsPage() {
   );
   return (
     <div className="page">
-      <PageHeading title="Os reis do pesadelo" />
+      <PageHeading title="Os nomes que viram lenda." />
       <div className="mb-6 flex flex-wrap gap-4">
         <Input
           className="max-w-sm"
