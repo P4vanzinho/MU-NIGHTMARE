@@ -1,0 +1,93 @@
+.rank-badge {
+  position: relative;
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-muted-foreground);
+  font-variant-numeric: tabular-nums;
+}
+.rank-badge[data-rank] {
+  border: 1px solid #a6a0c14d;
+  border-radius: 12px;
+  background: #b7a0ef0d;
+  color: #ddd4f4;
+}
+.rank-badge .rank-emblem {
+  position: absolute;
+  top: -9px;
+  width: 18px;
+  height: 18px;
+  padding: 2px;
+  border-radius: 4px;
+  background: #24202f;
+}
+.rank-badge[data-rank="1"] {
+  border-color: #c4a1ff;
+  background: linear-gradient(145deg, #72529c, #35264c);
+  color: #fff;
+  box-shadow: 0 0 18px #b48aff26;
+  font-size: 28px;
+}
+.rank-badge[data-rank="1"] .rank-emblem {
+  width: 24px;
+  height: 20px;
+  top: -11px;
+  color: #e4cdff;
+}
+.rank-badge[data-rank="2"] {
+  border-color: #a5b5ce;
+  color: #deebff;
+  background: linear-gradient(145deg, #3a4558, #262b36);
+  font-size: 25px;
+}
+.rank-badge[data-rank="3"] {
+  border-color: #977aa5;
+  color: #d7bddf;
+  background: linear-gradient(145deg, #43324e, #2a2332);
+  font-size: 23px;
+}
+.rank-badge[data-rank="4"] {
+  border-radius: 12px 12px 18px 18px;
+}
+.rank-badge[data-rank="5"] {
+  border-radius: 12px 12px 18px 18px;
+  border-style: dashed;
+  color: #b8afcb;
+}
+.ranking-row {
+  padding-inline: 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.ranking-row[data-position="1"] {
+  background: linear-gradient(90deg, #8b5bbd33, #8b5bbd0a 75%);
+  box-shadow: inset 3px 0 #c4a1ff;
+}
+.ranking-row[data-position="2"] {
+  background: linear-gradient(90deg, #a5b5ce19, transparent 75%);
+  box-shadow: inset 2px 0 #a5b5ce80;
+}
+.ranking-row[data-position="3"] {
+  background: linear-gradient(90deg, #977aa512, transparent 75%);
+  box-shadow: inset 2px 0 #977aa54d;
+}
+.ranking-row:hover {
+  background-color: #ffffff06;
+}
+@media (max-width: 640px) {
+  .rank-badge {
+    width: 44px;
+    height: 48px;
+  }
+  .ranking-row {
+    padding-inline: 8px;
+  }
+  .ranking-row > div {
+    gap: 12px;
+  }
+}

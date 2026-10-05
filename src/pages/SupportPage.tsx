@@ -89,9 +89,7 @@ export function SupportPage({ community = false }: { community?: boolean }) {
           <Button type="submit">
             <Translated text="Enviar reporte demo" />
           </Button>
-          <p className="muted text-sm">
-            <Translated text="O reporte fica neste navegador. Nenhum envio externo é realizado." />
-          </p>
+         
         </form>
         <div className="panel">
           <h2 className="mb-4 text-2xl font-bold">

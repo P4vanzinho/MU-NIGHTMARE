@@ -1,3 +1,4 @@
+import { RankBadge } from "@/features/rankings/RankBadge";
 import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { useState } from "react";
@@ -67,14 +68,13 @@ export function RankingsPage() {
         </div>
         {rows.map((r) => (
           <button
-            className="data-row w-full text-left"
+            className="data-row ranking-row w-full text-left"
+            data-position={rankings.indexOf(r) + 1}
             key={r.name}
             onClick={() => setSelected(r)}
           >
             <div className="flex items-center gap-5">
-              <span className="text-xl font-bold text-primary">
-                {String(rankings.indexOf(r) + 1).padStart(2, "0")}
-              </span>
+              <RankBadge position={rankings.indexOf(r) + 1} />
               <div>
                 <p className="font-bold">
                   <Translated text={r.name} />
