@@ -26,3 +26,9 @@ Em 1910 × 915 px, os dois slides mantêm exatamente a mesma geometria e a filei
 ## Esteira de notícias e status — 05/10/2026
 
 Oito testes de navegador aprovados, incluindo movimento contínuo, pausa e retomada, acesso à notícia, preferência de movimento reduzido e detalhes do servidor em 320 px. Após o ajuste de foco por teclado, os três testes específicos passaram novamente. Build e lint aprovados. Header com 112 px; ausência de overflow em 320, 390, 1440 e 1910 px. Capturas desktop, mobile e primeira tela atualizadas.
+
+## Navegação pública e conta — 05/10/2026
+
+Header simplificado: Rankings, Eventos, Loja e Reportar bug. Menu da conta condicionado à sessão, com sair no desktop/mobile. Políticas no rodapé, Discord direcionado à comunidade enquanto o convite oficial não está configurado. Idioma de 16 px com padding e busca desktop ampliada. Eyebrows e descrições do PageHeading removidos nas páginas e catálogo.
+
+Nove testes existentes passaram; dois testes novos verificam login/logout, ausência de opções privadas para visitantes, políticas no rodapé e ausência de overflow em 320, 390, 768, 1280, 1440 e 1910 px. Build e lint aprovados.

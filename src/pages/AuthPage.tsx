@@ -32,13 +32,7 @@ export function AuthPage({
   return (
     <div className="page">
       <div className="mx-auto max-w-md">
-        <PageHeading
-          eyebrow={
-            mode === "register" ? "Sua jornada começa aqui" : "Conta Nightmare"
-          }
-          title={title}
-          description="Dados locais de demonstração. Não use sua senha real."
-        />
+        <PageHeading title={title} />
         <form className="panel form-stack" onSubmit={submit}>
           <Field label="Nome da conta">
             <Input

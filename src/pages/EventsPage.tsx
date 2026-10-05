@@ -10,11 +10,7 @@ export function EventsPage() {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Agenda do pesadelo"
-        title="Entre. Lute. Conquiste."
-        description="Agenda mockada em horário de Brasília. Os eventos se repetem diariamente."
-      />
+      <PageHeading title="Entre. Lute. Conquiste." />
       <div className="grid-cards">
         {events.map((e) => (
           <article key={e.name}>

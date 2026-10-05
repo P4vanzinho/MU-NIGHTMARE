@@ -12,11 +12,7 @@ export function SupportPage({ community = false }: { community?: boolean }) {
   if (community)
     return (
       <div className="page">
-        <PageHeading
-          eyebrow="Mais fortes juntos"
-          title="Sua guilda começa aqui."
-          description="Uma comunidade para jogar, negociar e compartilhar conquistas."
-        />
+        <PageHeading title="Sua guilda começa aqui." />
         <div className="grid-cards">
           {[
             [
@@ -63,11 +59,7 @@ export function SupportPage({ community = false }: { community?: boolean }) {
     );
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Ajude a melhorar"
-        title="Encontrou algo estranho?"
-        description="Reporte bugs sem explorá-los. Inclua passos claros para reprodução."
-      />
+      <PageHeading title="Encontrou algo estranho?" />
       <div className="grid gap-8 lg:grid-cols-2">
         <form
           className="panel form-stack"

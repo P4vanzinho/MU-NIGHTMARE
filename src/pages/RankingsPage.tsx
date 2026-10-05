@@ -23,11 +23,7 @@ export function RankingsPage() {
   );
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Hall da fama"
-        title="Os nomes que viram lenda."
-        description="Ranking demonstrativo por resets. Explore os caçadores da Season 6."
-      />
+      <PageHeading title="Os nomes que viram lenda." />
       <div className="mb-6 flex flex-wrap gap-4">
         <Input
           className="max-w-sm"

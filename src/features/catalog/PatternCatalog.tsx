@@ -34,11 +34,7 @@ export function PatternCatalog({ onDialog }: { onDialog: () => void }) {
         </p>
       </div>
       <div className="panel">
-        <PageHeading
-          eyebrow="PageHeading"
-          title="Hierarquia clara."
-          description="Título, contexto e ação no mesmo padrão."
-        />
+        <PageHeading title="Hierarquia clara." />
         <Field label="Field">
           <Input placeholder="Label + controle" />
         </Field>

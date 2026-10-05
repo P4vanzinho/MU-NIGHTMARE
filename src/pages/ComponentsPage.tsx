@@ -17,11 +17,7 @@ export function ComponentsPage() {
   const [dialog, setDialog] = useState(false);
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Design system · v0.1"
-        title="Um sistema. Todas as telas."
-        description="Catálogo vivo de componentes shadcn, padrões de produto e tokens compartilhados."
-      />
+      <PageHeading title="Um sistema. Todas as telas." />
       <Tabs defaultValue="ui">
         <TabsList className="mb-6">
           <TabsTrigger value="ui">

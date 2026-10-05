@@ -7,11 +7,7 @@ import { toast } from "sonner";
 export function DownloadPage() {
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Seu próximo capítulo"
-        title="Tudo pronto para jogar."
-        description="Neste protótipo o download é simulado; nenhum executável será baixado."
-      />
+      <PageHeading title="Tudo pronto para jogar." />
       <div className="grid-cards">
         {[
           [

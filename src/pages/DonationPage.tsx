@@ -12,11 +12,7 @@ export function DonationPage() {
   const [checkout, setCheckout] = useState<string | null>(null);
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Mantenha o pesadelo vivo"
-        title="Apoie o servidor."
-        description="Escolha um valor e receba Nightmare Coins em uma doação simulada."
-      />
+      <PageHeading title="Apoie o servidor." />
       <AuthGate>
         <div className="panel form-stack max-w-xl">
           <div className="flex flex-wrap gap-3">

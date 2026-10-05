@@ -1,10 +1,12 @@
+import { NavGroup } from "./NavGroup";
+import { DiscordIcon } from "@/components/shared/DiscordIcon";
 import { ServerStatusBar } from "./ServerStatusBar";
 import { useContext } from "react";
 import { Globe } from "lucide-react";
 import { LocaleContext } from "@/i18n/context";
 import { Translated } from "@/i18n/Translated";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Shield, Search, Menu, ChevronDown, Download } from "lucide-react";
+import { Shield, Search, Menu, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/shared/LocalizedInput";
 import {
@@ -15,38 +17,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useGame } from "@/store/useGame";
 const links = [
-  ["Servidor", "/server"],
   ["Rankings", "/stats"],
   ["Eventos", "/events"],
-  ["Novidades", "/news"],
+  ["Reportar bug", "/bugreport"],
 ];
-const groups = [
-  {
-    label: "Conta",
-    links: [
-      ["Minha conta", "/account"],
-      ["Entrar", "/login"],
-      ["Criar conta", "/register"],
-      ["Alterar senha", "/changepass"],
-    ],
-  },
-  {
-    label: "Loja",
-    links: [
-      ["Nightmare Shop", "/shop"],
-      ["Marketplace", "/marketplace"],
-      ["Doação", "/donation"],
-    ],
-  },
-  {
-    label: "Mais",
-    links: [
-      ["Regras e políticas", "/rules"],
-      ["Reportar bug", "/bugreport"],
-      ["Comunidade", "/community"],
-      ["Catálogo de componentes", "/components"],
-    ],
-  },
+const shopLinks = [
+  ["Nightmare Shop", "/shop"],
+  ["Marketplace", "/marketplace"],
+  ["Doação", "/donation"],
 ];
 export function Header() {
   const { locale, setLocale } = useContext(LocaleContext);
@@ -68,18 +46,15 @@ export function Header() {
           </strong>
         </Link>
         <nav className="desktop-nav" aria-label="Principal">
-          {links.slice(0, 3).map(([title, to]) => (
+          {links.slice(0, 2).map(([title, to]) => (
             <NavLink className="nav-link" key={to} to={to}>
               <Translated text={title} />
             </NavLink>
           ))}
-          {groups.slice(0, 2).map((group) => (
-            <NavGroup key={group.label} {...group} />
-          ))}
-          <NavLink to="/news">
-            <Translated text="Novidades" />
+          <NavGroup label="Loja" links={shopLinks} />
+          <NavLink className="nav-link" to="/bugreport">
+            <Translated text="Reportar bug" />
           </NavLink>
-          <NavGroup {...groups[2]} />
         </nav>
         <form
           className="header-search"
@@ -99,24 +74,24 @@ export function Header() {
             />
           </div>
         </form>
-        <Button
-          asChild
-          variant="ghost"
-          className="hide-mobile header-text-button"
-        >
-          <Link to={user ? "/account" : "/login"}>
-            <Translated text={user ? user.username : "Entrar"} />
-          </Link>
-        </Button>
-        <Button
-          asChild
-          variant="secondary"
-          className="hide-mobile header-text-button"
-        >
-          <Link to="/shop">
-            <Translated text="Loja" />
-          </Link>
-        </Button>
+        <div className="header-account hide-mobile">
+          {user ? (
+            <NavGroup
+              label={user.username}
+              links={[
+                ["Minha conta", "/account"],
+                ["Alterar senha", "/changepass"],
+              ]}
+              onLogout={() => dispatch({ type: "session", username: null })}
+            />
+          ) : (
+            <Button asChild variant="ghost" className="header-text-button">
+              <Link to="/login">
+                <Translated text="Entrar" />
+              </Link>
+            </Button>
+          )}
+        </div>
         <Button asChild>
           <Link to="/download">
             <Translated text="Baixar" />
@@ -124,14 +99,24 @@ export function Header() {
           </Link>
         </Button>
         <Button
+          asChild
           variant="ghost"
-          size="icon"
+          className="header-discord header-text-button"
+          aria-label="Discord"
+        >
+          <Link to="/community" title="Discord">
+            <DiscordIcon />
+          </Link>
+        </Button>
+        <Button
+          variant="ghost"
+          className="header-language header-text-button"
           aria-label="Idioma / Language"
           title={locale === "pt" ? "Switch to English" : "Mudar para português"}
           onClick={() => setLocale(locale === "pt" ? "en" : "pt")}
         >
           <Globe className="h-4 w-4" />
-          <span className="text-[10px]">{locale.toUpperCase()}</span>
+          <span>{locale.toUpperCase()}</span>
         </Button>
         <div className="mobile-menu ml-auto">
           <DropdownMenu>
@@ -144,15 +129,23 @@ export function Header() {
               align="end"
               className="max-h-[75vh] overflow-auto"
             >
-              {[...links, ...groups.flatMap((g) => g.links)].map(
-                ([label, to]) => (
-                  <DropdownMenuItem asChild key={to}>
-                    <Link to={to}>
-                      <Translated text={label} />
-                    </Link>
-                  </DropdownMenuItem>
-                ),
-              )}
+              {[
+                ...links,
+                ...shopLinks,
+                ...(user
+                  ? [
+                      ["Minha conta", "/account"],
+                      ["Alterar senha", "/changepass"],
+                    ]
+                  : [["Entrar", "/login"]]),
+                ["Comunidade Discord", "/community"],
+              ].map(([label, to]) => (
+                <DropdownMenuItem asChild key={to}>
+                  <Link to={to}>
+                    <Translated text={label} />
+                  </Link>
+                </DropdownMenuItem>
+              ))}
               {user && (
                 <DropdownMenuItem
                   onClick={() => dispatch({ type: "session", username: null })}
@@ -166,24 +159,5 @@ export function Header() {
       </div>
       <ServerStatusBar />
     </header>
-  );
-}
-function NavGroup({ label, links }: { label: string; links: string[][] }) {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-1">
-        <Translated text={label} />
-        <ChevronDown className="h-3 w-3" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        {links.map(([title, to]) => (
-          <DropdownMenuItem asChild key={to}>
-            <Link to={to}>
-              <Translated text={title} />
-            </Link>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }

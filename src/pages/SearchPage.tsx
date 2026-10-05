@@ -25,11 +25,7 @@ export function SearchPage() {
   ].filter(([label]) => label.toLowerCase().includes(query.toLowerCase()));
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Explore o pesadelo"
-        title={"Resultados para “" + query + "”"}
-        description={results.length + " resultados encontrados"}
-      />
+      <PageHeading title={"Resultados para “" + query + "”"} />
       <div className="panel">
         {results.map(([label, to], i) => (
           <Link className="data-row" key={i} to={to}>

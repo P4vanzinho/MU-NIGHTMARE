@@ -9,13 +9,11 @@ export function NewsPage() {
   return (
     <div className="page">
       <PageHeading
-        eyebrow="Novidades"
         title={slug ? "Season 6 está no ar." : "Um novo capítulo a cada dia."}
-        description="Atualizações, eventos e novidades da comunidade."
       />
       {slug ? (
         <article className="panel max-w-3xl">
-          <p className="eyebrow mb-6">
+          <p className="font-semibold mb-6">
             <Translated text="04 OUT 2026 · Atualização demo" />
           </p>
           <h2 className="text-3xl font-bold">

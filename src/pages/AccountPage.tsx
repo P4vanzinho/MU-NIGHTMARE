@@ -16,9 +16,7 @@ export function AccountPage() {
         {user && (
           <>
             <PageHeading
-              eyebrow="Seu legado"
               title={"Olá, " + user.username + "."}
-              description="Gerencie seus personagens, seu inventário e suas próximas conquistas."
               action={
                 <Button
                   variant="secondary"
@@ -48,7 +46,7 @@ export function AccountPage() {
                 ],
               ].map(([label, value]) => (
                 <div key={label} className="panel">
-                  <p className="eyebrow mb-3">
+                  <p className="font-semibold mb-3">
                     <Translated text={label} />
                   </p>
                   <p className="text-xl font-bold">

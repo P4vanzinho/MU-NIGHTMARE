@@ -37,9 +37,7 @@ export function ShopPage() {
   return (
     <div className="page">
       <PageHeading
-        eyebrow="Nightmare × Loja"
         title="Prepare seu próximo capítulo."
-        description="Nightmare Coins, VIP e serviços. Pagamentos e benefícios simulados."
         action={
           !user ? (
             <Button asChild>

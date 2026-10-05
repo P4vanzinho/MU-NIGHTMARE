@@ -15,9 +15,6 @@ export function HomePage() {
         <section className="section">
           <div className="mb-6 flex justify-between">
             <div>
-              <p className="eyebrow mb-2">
-                <Translated text="Encontre seu desafio" />
-              </p>
               <h2 className="text-3xl font-bold">
                 <Translated text="O mundo não espera." />
               </h2>
@@ -45,15 +42,9 @@ export function HomePage() {
         </section>
         <section className="section panel flex flex-wrap items-center justify-between gap-6 !bg-[#28204a]">
           <div>
-            <p className="eyebrow mb-2">
-              <Translated text="Jogue junto" />
-            </p>
             <h2 className="text-3xl font-bold">
               <Translated text="Entre no pesadelo." />
             </h2>
-            <p className="muted mt-2">
-              <Translated text="Guildas, trocas e histórias que ficam. Sua comunidade está aqui." />
-            </p>
           </div>
           <Button asChild size="lg">
             <Link to="/community">

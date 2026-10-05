@@ -65,11 +65,7 @@ export function MarketplacePage() {
   );
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="De jogador para jogador"
-        title="Marketplace"
-        description="Encontre seu próximo item. Negocie com a comunidade. Faça sua oferta."
-      />
+      <PageHeading title="Marketplace" />
       <Tabs defaultValue={params.get("tab") || "browse"}>
         <TabsList className="mb-6 h-auto flex-wrap">
           {[

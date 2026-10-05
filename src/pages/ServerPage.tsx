@@ -6,9 +6,7 @@ export function ServerPage() {
   return (
     <div className="page">
       <PageHeading
-        eyebrow="MU Online · Season 6"
         title="Um mundo mais sombrio espera."
-        description="Um servidor privado feito para quem quer mais. Evolua, encontre sua guilda e chegue ao topo."
         action={
           <Button asChild>
             <Link to="/download">
@@ -29,7 +27,7 @@ export function ServerPage() {
           ["Versão", "Season 6"],
         ].map(([title, value]) => (
           <div className="panel" key={title}>
-            <p className="eyebrow mb-4">
+            <p className="font-semibold mb-4">
               <Translated text={title} />
             </p>
             <p className="text-4xl font-bold">

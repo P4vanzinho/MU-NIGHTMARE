@@ -49,11 +49,7 @@ const sections = [
 export function RulesPage() {
   return (
     <div className="page">
-      <PageHeading
-        eyebrow="Jogo justo"
-        title="Regras e políticas."
-        description="Direitos, responsabilidades e canais de suporte. Textos resumidos para o protótipo."
-      />
+      <PageHeading title="Regras e políticas." />
       <Tabs defaultValue="rules">
         <TabsList className="mb-6 h-auto flex-wrap">
           {sections.map((s) => (
