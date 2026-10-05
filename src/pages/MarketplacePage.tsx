@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { AdvancedFilters } from "@/features/market/AdvancedFilters";
 import type { AdvancedFilters as Filters } from "@/types/filters";
@@ -93,10 +94,10 @@ export function MarketplacePage() {
               />
             </Field>
             <Field label="Categoria">
-              <select
+              <FormSelect
                 value={category}
-                onChange={(e) => {
-                  setCategory(e.target.value);
+                onValueChange={(value) => {
+                  setCategory(value);
                   setPage(0);
                 }}
               >
@@ -111,39 +112,42 @@ export function MarketplacePage() {
                   "Joias",
                   "Pergaminhos",
                 ].map((c) => (
-                  <option key={c}>
+                  <SelectOption key={c} value={c}>
                     <Translated text={c} />
-                  </option>
+                  </SelectOption>
                 ))}
-              </select>
+              </FormSelect>
             </Field>
             <Field label="Moeda">
-              <select
+              <FormSelect
                 value={currency}
-                onChange={(e) => {
-                  setCurrency(e.target.value);
+                onValueChange={(value) => {
+                  setCurrency(value);
                   setPage(0);
                 }}
               >
                 {["Todas", "NC", "Bless", "Soul", "Jewels", "BRL"].map((c) => (
-                  <option key={c}>
+                  <SelectOption key={c} value={c}>
                     <Translated text={c} />
-                  </option>
+                  </SelectOption>
                 ))}
-              </select>
+              </FormSelect>
             </Field>
             <Field label="Ordenação">
-              <select value={sort} onChange={(e) => setSort(e.target.value)}>
-                <option value="recent">
+              <FormSelect
+                value={sort}
+                onValueChange={(value) => setSort(value)}
+              >
+                <SelectOption value="recent">
                   <Translated text="Mais recentes" />
-                </option>
-                <option value="asc">
+                </SelectOption>
+                <SelectOption value="asc">
                   <Translated text="Menor preço" />
-                </option>
-                <option value="desc">
+                </SelectOption>
+                <SelectOption value="desc">
                   <Translated text="Maior preço" />
-                </option>
-              </select>
+                </SelectOption>
+              </FormSelect>
             </Field>
             <Field label="Vendedor">
               <Input

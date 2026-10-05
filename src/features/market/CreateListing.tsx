@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { useState } from "react";
 import { JewelFields } from "./JewelFields";
@@ -66,36 +67,36 @@ export function CreateListing() {
             <Translated text="Seu item, uma nova história." />
           </h2>
           <Field label="Item do banco do site">
-            <select name="item">
+            <FormSelect name="item">
               {items.map((i) => (
-                <option key={i.id} value={i.id}>
+                <SelectOption key={i.id} value={i.id}>
                   <Translated text={i.name} /> +<Translated text={i.level} />
-                </option>
+                </SelectOption>
               ))}
-            </select>
+            </FormSelect>
           </Field>
           <Field label="Moeda">
-            <select
+            <FormSelect
               name="currency"
               value={currency}
-              onChange={(e) => setCurrency(e.target.value as Currency)}
+              onValueChange={(value) => setCurrency(value as Currency)}
             >
-              <option value="NC">
+              <SelectOption value="NC">
                 <Translated text="Nightmare Coins" />
-              </option>
-              <option value="Bless">
+              </SelectOption>
+              <SelectOption value="Bless">
                 <Translated text="Jewel of Bless" />
-              </option>
-              <option value="Soul">
+              </SelectOption>
+              <SelectOption value="Soul">
                 <Translated text="Jewel of Soul" />
-              </option>
-              <option value="Jewels">
+              </SelectOption>
+              <SelectOption value="Jewels">
                 <Translated text="Cesta de joias" />
-              </option>
-              <option value="BRL">
+              </SelectOption>
+              <SelectOption value="BRL">
                 <Translated text="Real · PIX demo" />
-              </option>
-            </select>
+              </SelectOption>
+            </FormSelect>
           </Field>
           {currency === "Jewels" ? (
             <JewelFields />

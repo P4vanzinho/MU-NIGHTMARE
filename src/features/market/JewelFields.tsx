@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { useState } from "react";
 import { jewelNames } from "@/data/jewels";
@@ -14,13 +15,13 @@ export function JewelFields() {
       {Array.from({ length: count }, (_, i) => (
         <div className="grid grid-cols-2 gap-3" key={i}>
           <Field label={"Joia " + (i + 1)}>
-            <select name="jewelName" defaultValue={jewelNames[i]}>
+            <FormSelect name="jewelName" defaultValue={jewelNames[i]}>
               {jewelNames.map((name) => (
-                <option key={name}>
+                <SelectOption key={name} value={name}>
                   <Translated text={name} />
-                </option>
+                </SelectOption>
               ))}
-            </select>
+            </FormSelect>
           </Field>
           <Field label="Quantidade">
             <Input

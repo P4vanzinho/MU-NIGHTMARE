@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { useGame } from "@/store/useGame";
 import { Button } from "@/components/ui/button";
@@ -55,7 +56,7 @@ export function CharactersPanel() {
             <Input name="name" defaultValue={char.name} />
           </Field>
           <Field label="Classe">
-            <select name="class" defaultValue={char.className}>
+            <FormSelect name="class" defaultValue={char.className}>
               {[
                 "Blade Knight",
                 "Soul Master",
@@ -65,11 +66,11 @@ export function CharactersPanel() {
                 "Summoner",
                 "Rage Fighter",
               ].map((c) => (
-                <option key={c}>
+                <SelectOption key={c} value={c}>
                   <Translated text={c} />
-                </option>
+                </SelectOption>
               ))}
-            </select>
+            </FormSelect>
           </Field>
           <Button type="submit">
             <Translated text="Salvar nome e classe · 200 NC" />

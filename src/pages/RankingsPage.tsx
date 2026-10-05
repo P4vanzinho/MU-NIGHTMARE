@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { useState } from "react";
 import { rankings } from "@/data/seed";
@@ -32,13 +33,14 @@ export function RankingsPage() {
           placeholder="Buscar personagem"
           aria-label="Buscar personagem"
         />
-        <label className="field">
+        <label className="field w-52">
           <span className="sr-only">
             <Translated text="Classe" />
           </span>
-          <select
+          <FormSelect
+            aria-label="Classe"
             value={className}
-            onChange={(e) => setClassName(e.target.value)}
+            onValueChange={(value) => setClassName(value)}
           >
             {[
               "Todas",
@@ -47,11 +49,11 @@ export function RankingsPage() {
               "Muse Elf",
               "Dark Lord",
             ].map((c) => (
-              <option key={c}>
+              <SelectOption key={c} value={c}>
                 <Translated text={c} />
-              </option>
+              </SelectOption>
             ))}
-          </select>
+          </FormSelect>
         </label>
       </div>
       <div className="panel">

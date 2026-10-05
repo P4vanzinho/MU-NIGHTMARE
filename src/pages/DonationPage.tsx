@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { useState } from "react";
 import { useGame } from "@/store/useGame";
@@ -33,17 +34,17 @@ export function DonationPage() {
             <Translated text="NC" />
           </p>
           <Field label="Forma de pagamento">
-            <select>
-              <option>
+            <FormSelect>
+              <SelectOption value="pix">
                 <Translated text="PIX · demonstração" />
-              </option>
-              <option>
+              </SelectOption>
+              <SelectOption value="card">
                 <Translated text="Cartão · demonstração" />
-              </option>
-              <option>
+              </SelectOption>
+              <SelectOption value="boleto">
                 <Translated text="Boleto · demonstração" />
-              </option>
-            </select>
+              </SelectOption>
+            </FormSelect>
           </Field>
           <Button
             onClick={() => {

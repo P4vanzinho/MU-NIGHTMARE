@@ -38,3 +38,11 @@ Nove testes existentes passaram; dois testes novos verificam login/logout, ausê
 Terceiro destaque do hero apresenta recompensas por reporte de bugs e abre /bugreport. Card da comunidade removido da home. Footer compartilhado para público e conta: marca, Discord, reporte, download, navegação e voltar ao topo. Espaço final da home reduzido a 32 px. Catálogo público e seus arquivos removidos; componentes reutilizáveis do produto preservados.
 
 Onze testes existentes e dois novos passaram. Novos testes cobrem CTA do destaque, igualdade do footer entre visitante e conta demo, remoção do catálogo e geometria no desktop/mobile. Build e lint aprovados.
+
+## Selects, foco e footer — 05/10/2026
+
+FormSelect compartilhado baseado no Select shadcn/Radix substitui os selects nativos de ranking, mercado, moedas, joias, personagens e doação. Mantém nome/valor no FormData e reset do formulário. Ranking com busca e filtro de 36 px. Foco com ring/outline de 1 px em cinza-violeta; primária passa de amarelo ácido para violeta #b7a0ef.
+
+Footer com marca/social, grupos Jogo e Comunidade e bloco legal discreto, sem altura fixa ou opções adicionais. Referência solicitada: https://www.fortnite.com/ (captura visual bloqueada por verificação de segurança). Pesquisa da paleta: https://blog.adobe.com/en/publish/2020/12/04/modern-gothic-design-explores-empowers-with-futuristic-noir .
+
+Build e lint aprovados. Quatorze testes de navegador passaram na execução geral; os dois testes específicos passaram após corrigir o seletor do formulário no teste. Verificados filtro por classe, altura comum, foco sutil, envio FormData e reset.

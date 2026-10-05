@@ -1,3 +1,4 @@
+import { FormSelect, SelectOption } from "@/components/shared/FormSelect";
 import { Translated } from "@/i18n/Translated";
 import { JewelFields } from "./JewelFields";
 import { parseJewels } from "@/lib/parseJewels";
@@ -105,21 +106,21 @@ export function MarketDialog({
                   }}
                 >
                   <Field label="Moeda da oferta">
-                    <select
+                    <FormSelect
                       value={currency}
-                      onChange={(e) =>
-                        setOfferCurrency(e.target.value as Currency)
+                      onValueChange={(value) =>
+                        setOfferCurrency(value as Currency)
                       }
                     >
                       {(listing.offerCurrencies?.length
                         ? listing.offerCurrencies
                         : ["NC", "Bless", "Soul", "Jewels", "BRL"]
                       ).map((c) => (
-                        <option key={c}>
+                        <SelectOption key={c} value={c}>
                           <Translated text={c} />
-                        </option>
+                        </SelectOption>
                       ))}
-                    </select>
+                    </FormSelect>
                   </Field>
                   {currency === "Jewels" ? (
                     <JewelFields />
