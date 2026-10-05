@@ -47,9 +47,6 @@ const DonationPage = lazy(() =>
 const SearchPage = lazy(() =>
   import("@/pages/SearchPage").then((m) => ({ default: m.SearchPage })),
 );
-const ComponentsPage = lazy(() =>
-  import("@/pages/ComponentsPage").then((m) => ({ default: m.ComponentsPage })),
-);
 export default function App() {
   return (
     <LocaleProvider>
@@ -85,7 +82,6 @@ export default function App() {
                 <Route path="community" element={<SupportPage community />} />
                 <Route path="donation" element={<DonationPage />} />
                 <Route path="search" element={<SearchPage />} />
-                <Route path="components" element={<ComponentsPage />} />
                 <Route
                   path="*"
                   element={

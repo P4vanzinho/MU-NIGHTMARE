@@ -40,6 +40,21 @@ const slides = [
     cta: "Jogue agora",
     to: "/download",
   },
+  {
+    label: "RECOMPENSAS POR BUGS",
+    image: "/images/mu/mg.jpg",
+    title: (
+      <>
+        <Translated text="Encontrou um bug?" />
+        <br />
+        <Translated text="Ganhe recompensas." />
+      </>
+    ),
+    description:
+      "Reporte a falha. Bugs válidos podem render recompensas após análise da equipe.",
+    cta: "Reportar bug",
+    to: "/bugreport",
+  },
 ];
 export function Hero() {
   const [index, setIndex] = useState(0);

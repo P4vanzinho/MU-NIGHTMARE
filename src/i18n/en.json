@@ -516,7 +516,7 @@
   "Bem-vindo ao pesadelo": "Welcome to the nightmare",
   "Começar a jogar": "Start playing",
   "Hall da fama": "Hall of fame",
-  "Os nomes que viram lenda.": "Names that become legends.",
+  "Os reis do pesadelo.": "The kings of the nightmare.",
   "Ranking demonstrativo por resets. Explore os caçadores da Season 6.": "Demo ranking by resets. Explore Season 6 hunters.",
   "Buscar personagem": "Search character",
   "CAÇADOR": "HUNTER",
@@ -672,5 +672,8 @@
   "Informações do servidor": "Server information",
   "Status e jogadores são dados simulados deste protótipo.": "Status and player count are simulated in this prototype.",
   "jogadores online": "players online",
-  "Conhecer o servidor": "Explore the server"
+  "Conhecer o servidor": "Explore the server",
+  "Encontrou um bug?": "Found a bug?",
+  "Ganhe recompensas.": "Earn rewards.",
+  "Reporte a falha. Bugs válidos podem render recompensas após análise da equipe.": "Report the issue. Valid bugs may earn rewards after review by the team."
 }

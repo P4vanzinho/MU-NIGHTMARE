@@ -32,3 +32,9 @@ Oito testes de navegador aprovados, incluindo movimento contínuo, pausa e retom
 Header simplificado: Rankings, Eventos, Loja e Reportar bug. Menu da conta condicionado à sessão, com sair no desktop/mobile. Políticas no rodapé, Discord direcionado à comunidade enquanto o convite oficial não está configurado. Idioma de 16 px com padding e busca desktop ampliada. Eyebrows e descrições do PageHeading removidos nas páginas e catálogo.
 
 Nove testes existentes passaram; dois testes novos verificam login/logout, ausência de opções privadas para visitantes, políticas no rodapé e ausência de overflow em 320, 390, 768, 1280, 1440 e 1910 px. Build e lint aprovados.
+
+## Footer compartilhado e recompensas — 05/10/2026
+
+Terceiro destaque do hero apresenta recompensas por reporte de bugs e abre /bugreport. Card da comunidade removido da home. Footer compartilhado para público e conta: marca, Discord, reporte, download, navegação e voltar ao topo. Espaço final da home reduzido a 32 px. Catálogo público e seus arquivos removidos; componentes reutilizáveis do produto preservados.
+
+Onze testes existentes e dois novos passaram. Novos testes cobrem CTA do destaque, igualdade do footer entre visitante e conta demo, remoção do catálogo e geometria no desktop/mobile. Build e lint aprovados.

@@ -40,19 +40,6 @@ export function HomePage() {
             ))}
           </div>
         </section>
-        <section className="section panel flex flex-wrap items-center justify-between gap-6 !bg-[#28204a]">
-          <div>
-            <h2 className="text-3xl font-bold">
-              <Translated text="Entre no pesadelo." />
-            </h2>
-          </div>
-          <Button asChild size="lg">
-            <Link to="/community">
-              <Translated text="Conhecer a comunidade" />
-              <ArrowRight />
-            </Link>
-          </Button>
-        </section>
       </div>
     </>
   );

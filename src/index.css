@@ -342,10 +342,8 @@ a {
 }
 
 .home-content {
+  padding-bottom: 32px;
   padding-top: 20px;
-}
-.site-footer {
-  padding: 40px var(--layout-gutter);
 }
 @media (max-width: 1200px) {
   .hero-title {
@@ -359,9 +357,6 @@ a {
   }
   .home-content {
     padding-top: 20px;
-  }
-  .site-footer {
-    padding: 32px var(--layout-gutter);
   }
 }
 

@@ -36,20 +36,12 @@ test("conta, compra, cofre, anúncio e pagamento", async ({ page }) => {
   await page.reload();
   await expect(page.getByText("2650 NC")).toBeVisible();
 });
-test("catálogo, carrossel e mobile sem overflow", async ({ page }) => {
+test("carrossel e mobile sem overflow", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Pausar", exact: true }).click();
   await page.getByRole("button", { name: "Destaque 2", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "Nightmare Season 6" }),
-  ).toBeVisible();
-  await page.goto("/components");
-  await expect(
-    page.getByRole("heading", { name: "Um sistema. Todas as telas." }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Abrir dialog", exact: true }).click();
-  await expect(
-    page.getByRole("heading", { name: "Dialog reutilizável" }),
   ).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
@@ -119,7 +111,6 @@ test("todas as rotas públicas renderizam sem erro de JavaScript", async ({
     "/community",
     "/donation",
     "/search?q=loja",
-    "/components",
   ]) {
     await page.goto(path);
     await expect(page.locator("main")).toBeVisible();
