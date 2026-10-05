@@ -54,3 +54,7 @@ Componentes compartilhados SectionIntro, ImagePromotion e InfiniteConveyor. Home
 Blog interno com feed, busca/categoria, artigos com capa e parágrafos, publicação/edição pela conta demo (dono), curtidas únicas por usuário, comentários e exclusão pelo autor/dono, compartilhamento e persistência local. Visitantes leem; jogadores comuns interagem sem controles editoriais. Não há backend ou permissão real de administrador.
 
 Quinze testes existentes aprovados e três testes novos aprovados após corrigir a consulta do PIN no teste. Verificados promos, loop de eventos, publicação/edição, curtidas/comentários após reload e leitor sem permissão editorial. Build e lint aprovados. Layout sem overflow em 320, 390 e 1440 px.
+
+## Distribuição do footer — 05/10/2026
+
+Marca, navegação do jogo em duas colunas e comunidade distribuídas horizontalmente no desktop. Discord integrado ao link correspondente. Voltar ao topo acompanhado de texto junto às políticas na faixa inferior. Layout adapta os grupos no mobile sem altura fixa. Sem overflow em 320, 390, 1440 e 1910 px. Build, lint e quatro testes de footer/navegação aprovados.
