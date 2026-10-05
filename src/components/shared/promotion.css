@@ -65,3 +65,10 @@
     margin-bottom: 32px;
   }
 }
+
+@media (min-width: 1024px) {
+  .promotion-copy h3,
+  .promotion-copy p {
+    max-width: 75%;
+  }
+}
