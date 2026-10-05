@@ -1,6 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @theme inline {
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -52,7 +54,7 @@
 }
 body {
   margin: 0;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: "Inter", sans-serif;
   background: var(--background);
   color: var(--foreground);
 }
@@ -111,7 +113,7 @@ a {
 .field {
   display: grid;
   gap: 8px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .field input,
 .field select,
@@ -239,8 +241,8 @@ a {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-size: 14px;
+  gap: 4px;
+  font-size: 16px;
 }
 .nav-link.active {
   color: var(--primary);
@@ -267,7 +269,7 @@ a {
   display: grid;
   gap: 20px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1600px) {
   .desktop-nav {
     display: none;
   }
@@ -354,5 +356,26 @@ a {
   }
   .site-footer {
     padding: 32px var(--layout-gutter);
+  }
+}
+
+.desktop-nav > a,
+.desktop-nav > button,
+.site-header .header-text-button {
+  padding: 10px 16px;
+  height: auto;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.desktop-nav > a:hover,
+.desktop-nav > button:hover {
+  background: var(--color-secondary);
+}
+@media (max-width: 400px) {
+  .site-header {
+    gap: 4px;
+  }
+  .site-header > a > strong {
+    font-size: 16px;
   }
 }

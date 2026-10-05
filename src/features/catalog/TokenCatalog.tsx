@@ -48,7 +48,7 @@ export function TokenCatalog() {
           <Translated text="Marca e hero" />
         </p>
         <p className="mt-6 text-2xl font-bold">
-          <Translated text="Source Sans 3" />
+          <Translated text="Inter" />
         </p>
         <p className="muted mt-3">
           <Translated text="Interface, conteúdo e números" />

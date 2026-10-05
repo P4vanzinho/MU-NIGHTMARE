@@ -91,12 +91,20 @@ export function Header() {
           />
         </div>
       </form>
-      <Button asChild variant="ghost" className="hide-mobile">
+      <Button
+        asChild
+        variant="ghost"
+        className="hide-mobile header-text-button"
+      >
         <Link to={user ? "/account" : "/login"}>
           <Translated text={user ? user.username : "Entrar"} />
         </Link>
       </Button>
-      <Button asChild variant="secondary" className="hide-mobile">
+      <Button
+        asChild
+        variant="secondary"
+        className="hide-mobile header-text-button"
+      >
         <Link to="/shop">
           <Translated text="Loja" />
         </Link>
