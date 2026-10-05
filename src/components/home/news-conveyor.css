@@ -1,3 +1,7 @@
+/* The home rail clips at the viewport edges; its heading keeps the page gutter. */
+.home-content .news-conveyor {
+  margin-inline: calc(-1 * var(--layout-gutter));
+}
 .news-conveyor {
   overflow: hidden;
   padding: 4px 0 12px;

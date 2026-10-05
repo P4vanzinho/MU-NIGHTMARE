@@ -73,3 +73,41 @@ test("movimento reduzido inicia notícias pausadas", async ({ page }) => {
     page.getByRole("button", { name: "Retomar notícias", exact: true }),
   ).toBeVisible();
 });
+
+test("esteira alcança as bordas da tela sem cortar na margem do conteúdo", async ({
+  page,
+}) => {
+  for (const width of [320, 390, 1440, 1910]) {
+    await page.setViewportSize({ width, height: 915 });
+    await page.goto("/");
+    const rail = await page.locator(".news-conveyor").boundingBox();
+    expect(rail?.x).toBeCloseTo(0, 0);
+    expect(rail?.width).toBeCloseTo(width, 0);
+    const heading = await page
+      .getByRole("heading", { name: "Notícias", exact: true })
+      .boundingBox();
+    const status = await page.locator(".server-population").boundingBox();
+    expect(heading?.x).toBeCloseTo(status!.x, 0);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    const geometry = await page
+      .locator(".news-conveyor-track")
+      .evaluate((el) => {
+        const groups = Array.from(el.children).map((group) =>
+          group.getBoundingClientRect(),
+        );
+        return {
+          track: el.getBoundingClientRect().width,
+          first: groups[0].width,
+          second: groups[1].width,
+          gap: groups[1].left - groups[0].right,
+        };
+      });
+    expect(geometry.first).toBeCloseTo(geometry.second, 3);
+    expect(geometry.track / 2).toBeCloseTo(geometry.first, 3);
+    expect(geometry.gap).toBeCloseTo(0, 3);
+  }
+});
